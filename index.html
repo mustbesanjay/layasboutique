@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layas Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="viewport">
+
+  <!-- Announcement -->
+  <aside class="announce">
+    <span class="txt">FREE SHIPPING ON ORDERS ABOVE ₹3000</span>
+    <span class="heart">♡</span>
+  </aside>
+
+  <!-- Header -->
+  <header class="site">
+    <div class="brand-bar">
+      <a class="logo-link" href="#" aria-label="Layas Boutique Home">
+        <img alt="Layas Boutique" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/0b311.png">
+      </a>
+      <div class="quick">
+        <button class="icon-btn" aria-label="Search catalog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b1e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="User Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b1e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </button>
+        <button class="icon-btn" id="bagBtn" aria-label="Shopping Bag, 0 items">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2b1e22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="badge" id="bagCount">0</span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-collections" id="mainNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About Us</a>
+      <a href="blog.html">Blog</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-roledescription="carousel" aria-label="Campaign banners">
+      <div class="hero-track" id="heroTrack">
+        <div class="slides" id="slides">
+
+          <div class="slide">
+            <div class="slide-img">
+              <div class="photo"><img alt="Model posing in romantic floral puff sleeve dress from Layas Boutique" style="height:100%;left:-64.7%;width:229.39%" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/50f4f.png"></div>
+              <div class="g1"></div><div class="g2"></div>
+            </div>
+            <div class="slide-card">
+              <div class="script">New Collection</div>
+              <h1><span class="l1">Elevate your</span><span>Style</span><span class="h">♡</span></h1>
+              <div class="divider"></div>
+              <p class="desc">Timeless pieces for every mood, every moment, every you.</p>
+              <div class="btn-wrap"><a class="btn-pill" href="#">Shop Now <span class="arrow">→</span></a></div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-img">
+              <div class="photo"><img alt="Festive ethnic couture saree and lehenga collection" style="height:120%;left:0;width:100%" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/9c657.png"></div>
+              <div class="g1"></div><div class="g2"></div>
+            </div>
+            <div class="slide-card">
+              <div class="script">Festive Elegance</div>
+              <h2><span class="l1">Ethnic</span><span>Couture</span><span class="h">♡</span></h2>
+              <div class="divider"></div>
+              <p class="desc">Handcrafted silhouettes in soft pastels &amp; gilded threads.</p>
+              <div class="btn-wrap"><a class="btn-pill" href="#">Explore Ethnic <span class="arrow">→</span></a></div>
+            </div>
+          </div>
+
+          <div class="slide">
+            <div class="slide-img">
+              <div class="photo"><img alt="Summer breeze romantic dress and resort wear collection" style="height:119.9%;left:0;width:100%" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/6bb6d.png"></div>
+              <div class="g1"></div><div class="g2"></div>
+            </div>
+            <div class="slide-card">
+              <div class="script">Summer Breeze</div>
+              <h2><span class="l1">Effortless</span><span>Chic</span><span class="h">♡</span></h2>
+              <div class="divider"></div>
+              <p class="desc">Breathable linens and romantic puff sleeves for sunny getaways.</p>
+              <div class="btn-wrap"><a class="btn-pill" href="#">View Collection <span class="arrow">→</span></a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <button class="hero-arrow prev" id="heroPrev" aria-label="Previous banner slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8a3f55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="hero-arrow next" id="heroNext" aria-label="Next banner slide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8a3f55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+
+      <div class="dots" id="heroDots">
+        <button class="dot active" aria-label="Slide 1"></button>
+        <button class="dot" aria-label="Slide 2"></button>
+        <button class="dot" aria-label="Slide 3"></button>
+      </div>
+    </section>
+    
+
+    <!-- Shop by category -->
+    <section class="cats">
+      <div class="cats-head">
+        <button class="round-btn" id="catPrev" aria-label="Previous categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8a3f55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <div class="sec-title">
+          <h2>Shop by Category</h2>
+          <div class="orn"><i></i>
+            <svg viewBox="0 0 24 24" fill="#d6758d"><path d="M12 21s-7.5-4.6-9.5-9.3C1.2 8.4 3 5 6.4 5c2 0 3.7 1.1 5.6 3.2C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg>
+          <i></i></div>
+        </div>
+        <button class="round-btn" id="catNext" aria-label="Next categories">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#8a3f55" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <div class="cat-viewport">
+        <div class="cat-track" id="catTrack">
+          <a class="cat" href="#"><div class="ph"><img alt="Romantic floral dresses collection" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/6c705.png"></div><div class="shade"></div><div class="cap"><h3>Dresses</h3><span class="pill">Shop Now</span></div></a>
+          <a class="cat" href="#"><div class="ph"><img alt="Elegant white puff sleeve tops" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/81dad.png"></div><div class="shade"></div><div class="cap"><h3>Tops</h3><span class="pill">Shop Now</span></div></a>
+          <a class="cat" href="#"><div class="ph"><img alt="Soft pastel embroidered ethnic suit set" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/61d88.png"></div><div class="shade"></div><div class="cap"><h3>Ethnic Wear</h3><span class="pill">Shop Now</span></div></a>
+          <a class="cat" href="#"><div class="ph"><img alt="Minimal beige designer crossbody shoulder bag" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/dbccb.png"></div><div class="shade"></div><div class="cap"><h3>Accessories</h3><span class="pill">Shop Now</span></div></a>
+        </div>
+      </div>
+      <div class="cat-dots" id="catDots"><span class="d active"></span><span class="d"></span></div>
+    </section>
+
+    <!-- New arrivals -->
+    <section class="arrivals">
+      <div class="sec-title">
+        <h2>New Arrivals</h2>
+        <div class="orn"><i></i>
+          <svg viewBox="0 0 24 24" fill="#d6758d"><path d="M12 21s-7.5-4.6-9.5-9.3C1.2 8.4 3 5 6.4 5c2 0 3.7 1.1 5.6 3.2C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg>
+        <i></i></div>
+      </div>
+
+      <div class="grid" id="grid">
+        <article class="card" data-name="Floral Pink Dress">
+          <div>
+            <div class="img"><img alt="Floral Pink Dress" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/bb661.png"></div>
+            <h3>Floral Pink Dress</h3><div class="price">₹1,499</div>
+          </div>
+          <div class="actions"><button class="add">Add to Cart</button><button class="wish" aria-label="Add Floral Pink Dress to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="#d6758d" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.400 3 5 6.400 5c2 0 3.700 1.100 5.600 3.200C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg></button></div>
+        </article>
+        <article class="card" data-name="White Puff Top">
+          <div>
+            <div class="img"><img alt="White Puff Top paired with high waist jeans" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/3d00f.png"></div>
+            <h3>White Puff Top</h3><div class="price">₹999</div>
+          </div>
+          <div class="actions"><button class="add">Add to Cart</button><button class="wish" aria-label="Add White Puff Top to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="#d6758d" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.400 3 5 6.400 5c2 0 3.700 1.100 5.600 3.200C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg></button></div>
+        </article>
+        <article class="card" data-name="Soft Pink Ethnic Set">
+          <div>
+            <div class="img"><img alt="Soft Pink Pastel Ethnic Kurti Set" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/01725.png"></div>
+            <h3>Soft Pink Ethnic Set</h3><div class="price">₹2,199</div>
+          </div>
+          <div class="actions"><button class="add">Add to Cart</button><button class="wish" aria-label="Add Soft Pink Ethnic Set to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="#d6758d" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.400 3 5 6.400 5c2 0 3.700 1.100 5.600 3.200C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg></button></div>
+        </article>
+        <article class="card" data-name="Minimal Beige Bag">
+          <div>
+            <div class="img"><img alt="Minimal Beige Flap Bag with delicate gold accents" src="https://www.figma.com/api/mcp/asset/66249b20-ad57-4802-8d2b-0a8799605ddb/37d36.png"></div>
+            <h3>Minimal Beige Bag</h3><div class="price">₹1,199</div>
+          </div>
+          <div class="actions"><button class="add">Add to Cart</button><button class="wish" aria-label="Add Minimal Beige Bag to wishlist"><svg viewBox="0 0 24 24" fill="none" stroke="#d6758d" stroke-width="2" stroke-linejoin="round"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.400 3 5 6.400 5c2 0 3.700 1.100 5.600 3.200C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg></button></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="insta">
+      <div class="insta-box">
+        <div class="insta-head">
+          <div class="insta-ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#d6758d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r=".8" fill="#d6758d"/></svg>
+          </div>
+          <div class="insta-t">
+            <div class="k">Get Inspired <b>♡</b></div>
+            <h3>Follow us on Instagram</h3>
+          </div>
+        </div>
+        <a class="insta-btn" href="#">@layas.boutique</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site">
+    <div class="f-brand">
+      <div class="f-logo">
+        <div class="row"><span class="name">Layas</span>
+          <svg viewBox="0 0 24 24" fill="#d6758d"><path d="M12 21s-7.500-4.600-9.500-9.300C1.200 8.400 3 5 6.400 5c2 0 3.700 1.100 5.600 3.200C13.900 6.100 15.600 5 17.600 5 21 5 22.800 8.400 21.500 11.700 19.500 16.400 12 21 12 21z"/></svg>
+        </div>
+        <span class="sub">Boutique</span>
+      </div>
+      <p>Layas Boutique is all about celebrating you. We bring elegant, trendy &amp; timeless pieces to make you feel beautiful every day.</p>
+    </div>
+
+    <div class="f-groups">
+      <details open>
+        <summary>Quick Links <span class="chev">▼</span></summary>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </details>
+      <details>
+        <summary>Customer Care <span class="chev">▼</span></summary>
+        <ul>
+          <li><a href="#">Shipping &amp; Delivery</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </details>
+      <div class="news">
+        <h4>Newsletter</h4>
+        <p>Subscribe to get special offers and updates.</p>
+        <form id="newsForm" novalidate>
+          <input type="email" id="newsEmail" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit">Subscribe</button>
+          <div class="msg" id="newsMsg" role="status"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="f-bottom">
+      <div class="pay">
+        <span class="lbl">We Accept</span>
+        <div class="badges">
+          <span class="b" style="color:#1434cb">Visa</span>
+          <span class="b mc" style="color:#eb001b">MC</span>
+          <span class="b" style="color:#1a9f54">UPI</span>
+          <span class="b" style="color:#002970">Paytm</span>
+        </div>
+      </div>
+      <div class="copy">© 2026 Layas Boutique. All Rights Reserved.</div>
+    </div>
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

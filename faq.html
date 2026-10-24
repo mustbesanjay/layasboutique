@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQs | Layas Boutique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ==========================================================================
+   Layas Boutique – FAQ page
+   Values taken from Figma frame "Html → Body" (390px wide, mobile)
+   ========================================================================== */
+
+:root {
+  --bg: #fff7fa;
+  --surface: #ffffff;
+  --blush: #ffeff9;
+  --rose: #ffd9df;
+  --wine: #9a3b57;
+  --ink: #2f0e2f;
+  --text: #544245;
+  --muted: #877275;
+  --plum: #340043;
+  --lilac: #81488f;
+  --gold: #ffe174;
+
+  --font-serif: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --font-script: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --shadow-card: 0 2px 12px 0 rgba(62, 4, 78, 0.04);
+  --shadow-btn: 0 4px 6px rgba(154, 59, 87, 0.25);
+  --max-w: 430px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 140px; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: 0.12px;
+  padding-top: 128px;   /* header height: 32 + 56 + 40 */
+  padding-bottom: 96px; /* room for fixed bottom nav */
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+img, svg { display: block; }
+
+/* Center the mobile layout on larger screens */
+.page,
+.site-header,
+.bottom-nav {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  margin-inline: auto;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.announce {
+  height: 32px;
+  background: var(--plum);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0 16px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.announce p { margin: 0; }
+.announce-heart { color: var(--rose); font-size: 11px; font-weight: 500; letter-spacing: 0.9px; }
+
+.topbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+.logo { display: flex; align-items: center; gap: 4px; }
+.logo-script {
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: var(--lilac);
+}
+.logo-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.45px;
+  text-transform: uppercase;
+  color: var(--plum);
+}
+.logo-serif.dark { color: var(--plum); }
+
+.top-actions { display: flex; align-items: center; gap: 4px; }
+
+.icon-btn,
+.avatar {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: var(--wine);
+  color: #fff;
+  margin-left: 4px;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: var(--wine);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+.subnav {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.subnav::-webkit-scrollbar { display: none; }
+.subnav a {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 8px 0;
+}
+.subnav a.is-active { color: var(--wine); }
+
+/* ---------- Page ---------- */
+.page { padding: 0 0 32px; }
+
+.crumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px 4px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.crumbs a { color: var(--text); }
+.crumb-sep { color: var(--muted); font-size: 10px; }
+.crumb-current { color: var(--wine); font-weight: 600; }
+
+.page-head {
+  padding: 8px 16px 20px;
+  text-align: center;
+}
+.eyebrow {
+  margin: 0 0 4px;
+  font-family: var(--font-script);
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  color: var(--wine);
+}
+.page-head h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 28px;
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 128px;
+  margin: 8px auto 0;
+  color: var(--wine);
+}
+.ornament span { flex: 1; height: 1px; background: rgba(154, 59, 87, 0.4); }
+.ornament em { font-style: normal; font-size: 10px; line-height: 15px; }
+.intro {
+  max-width: 320px;
+  margin: 8px auto 0;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  color: var(--text);
+}
+
+/* ---------- Search ---------- */
+.search {
+  position: relative;
+  margin: 0 16px 20px;
+  background: var(--surface);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 12px rgba(154, 59, 87, 0.06);
+}
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+.search input {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding: 0 20px 0 44px;
+  font-size: 12px;
+  letter-spacing: 0.12px;
+  border-radius: 9999px;
+}
+.search input::placeholder { color: rgba(84, 66, 69, 0.6); }
+.search input:focus-visible { box-shadow: 0 0 0 2px var(--wine); }
+
+/* ---------- Pills ---------- */
+.pills {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  padding: 0 16px 20px;
+  scrollbar-width: none;
+}
+.pills::-webkit-scrollbar { display: none; }
+.pill {
+  flex: 0 0 auto;
+  background: var(--blush);
+  color: var(--text);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+.pill.is-active {
+  background: var(--wine);
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(154, 59, 87, 0.25);
+}
+
+/* ---------- FAQ groups ---------- */
+.faq-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 16px;
+}
+.faq-group { display: flex; flex-direction: column; gap: 8px; }
+.faq-group[hidden] { display: none; }
+
+.group-title {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.45px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.group-title svg { color: var(--wine); flex: 0 0 auto; margin-right: 4px; }
+
+.faq {
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  color: var(--ink);
+}
+.faq-q:focus-visible { outline: 2px solid var(--wine); outline-offset: -2px; }
+.chev {
+  flex: 0 0 auto;
+  color: var(--ink);
+  transition: transform 0.2s ease;
+}
+.faq-q[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+.faq-a { padding: 0 20px 12px; }
+.faq-a[hidden] { display: none; }
+.faq-a > p {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  color: var(--text);
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--blush);
+  border-radius: 8px;
+  padding: 8px;
+}
+.tip-title {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 14px;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.tip-sub {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 15px;
+  color: var(--wine);
+}
+
+.empty {
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+.empty[hidden] { display: none; }
+
+/* ---------- Buttons ---------- */
+.btn-solid,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  line-height: 14px;
+  text-align: center;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+.btn-solid {
+  background: var(--wine);
+  color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  padding: 6px 12px;
+}
+.btn-outline {
+  background: var(--surface);
+  color: var(--wine);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  padding: 8px;
+}
+.btn-solid:hover,
+.btn-outline:hover { opacity: 0.9; }
+.btn-sm { padding: 6px 12px; flex-direction: column; }
+.btn-block { width: 100%; padding: 8px; }
+.btn-pill { padding: 8px 20px; font-weight: 700; }
+.btn-sm-join { padding: 8px 12px; }
+
+/* ---------- Support card ---------- */
+.support {
+  margin: 32px 16px 0;
+  padding: 20px;
+  background: var(--blush);
+  border-radius: 12px;
+  box-shadow: 0 2px 7px rgba(62, 4, 78, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+.support-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 9999px;
+  background: var(--rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.script-sm {
+  margin: 0 0 4px;
+  font-family: var(--font-script);
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--wine);
+}
+.support-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.support-text {
+  max-width: 320px;
+  margin: 4px 0 20px;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.12px;
+  color: var(--text);
+}
+.support .btn-block + .btn-block { margin-top: 4px; }
+.support .btn-block { gap: 8px; }
+
+/* ---------- Instagram ---------- */
+.inspire {
+  margin: 32px 16px 0;
+  padding: 20px;
+  background: var(--blush);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.inspire svg { margin-bottom: 4px; }
+.inspire-title {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1.44px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin: 32px 16px 0;
+  padding: 20px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer .brand { display: flex; align-items: center; gap: 4px; }
+.footer .brand .logo-script { color: var(--lilac); }
+.footer .brand .logo-serif { color: var(--plum); font-weight: 700; }
+.footer-blurb { margin: 0; font-size: 12px; line-height: 18px; letter-spacing: 0.12px; }
+
+.foot-col { display: flex; flex-direction: column; gap: 4px; }
+.foot-col h4 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.foot-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.foot-col li a { font-size: 12px; line-height: 18px; letter-spacing: 0.12px; color: var(--text); }
+.foot-col li a:hover { color: var(--wine); }
+
+.news-text { margin: 0; font-size: 11px; font-weight: 500; line-height: 15px; color: var(--text); }
+.news-form {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 4px;
+}
+.news-form input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg);
+  border: 0;
+  border-radius: 9999px;
+  padding: 9px 12px;
+  font-size: 12px;
+  outline: none;
+}
+.news-form input::placeholder { color: rgba(84, 66, 69, 0.5); }
+.news-form input:focus-visible { box-shadow: 0 0 0 2px var(--wine); }
+.news-msg {
+  margin: 0;
+  min-height: 14px;
+  font-size: 11px;
+  color: var(--wine);
+}
+.copyright {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 15px;
+  color: var(--text);
+  padding-top: 12px;
+  border-top: 1px solid rgba(154, 59, 87, 0.12);
+}
+
+/* ---------- Bottom nav ---------- */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.bn-item {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text);
+}
+.bn-item span {
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 13.5px;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+}
+.bn-item.is-active { color: var(--wine); }
+.bn-item.is-active span { font-weight: 700; }
+
+/* ---------- Motion & accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+@media (min-width: 480px) {
+  body { background: #f6eef1; }
+  .page { background: var(--bg); min-height: 100vh; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER (fixed) ============ -->
+  <header class="site-header">
+    <div class="announce">
+      <p>Free shipping on orders above ₹3000</p>
+      <span class="announce-heart" aria-hidden="true">♡</span>
+    </div>
+
+    <div class="topbar">
+      <a href="#" class="logo" aria-label="Layas Boutique home">
+        <span class="logo-script">Layas</span>
+        <span class="logo-serif">BOUTIQUE</span>
+      </a>
+
+      <div class="top-actions">
+        <button class="icon-btn" aria-label="Search" data-action="focus-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <a href="#" class="icon-btn cart" aria-label="Cart, 0 items">
+          <svg width="15" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+          <span class="badge">0</span>
+        </a>
+        <a href="#" class="avatar" aria-label="Profile">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="subnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="faq.html" class="is-active">FAQ</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </header>
+
+  <main class="page">
+
+    <!-- Breadcrumb -->
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="#">Home</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-current">FAQs</span>
+    </nav>
+
+    <!-- Page header -->
+    <section class="page-head">
+      <p class="eyebrow">Help &amp; Support</p>
+      <h1>Frequently Asked<br />Questions</h1>
+      <div class="ornament" aria-hidden="true"><span></span><em>❦</em><span></span></div>
+      <p class="intro">Find instant answers regarding shipping, custom tailoring, orders, and returns for your festive wardrobe.</p>
+    </section>
+
+    <!-- Search -->
+    <div class="search">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="faqSearch" type="search" placeholder="Type question or keyword (e.g. tracking, sizing)..." aria-label="Search FAQs" />
+    </div>
+
+    <!-- Category pills -->
+    <div class="pills" role="tablist" aria-label="FAQ categories">
+      <button class="pill is-active" role="tab" aria-selected="true" data-filter="all">All<br />Questions</button>
+      <button class="pill" role="tab" aria-selected="false" data-filter="orders">Orders &amp;<br />Payments</button>
+      <button class="pill" role="tab" aria-selected="false" data-filter="shipping">Shipping<br />&amp; Delivery</button>
+      <button class="pill" role="tab" aria-selected="false" data-filter="returns">Returns &amp;<br />Exchanges</button>
+      <button class="pill" role="tab" aria-selected="false" data-filter="products">Products<br />&amp; Sizing</button>
+      <button class="pill" role="tab" aria-selected="false" data-filter="coupons">Coupons<br />&amp; Offers</button>
+    </div>
+
+    <!-- FAQ groups -->
+    <section class="faq-wrap" id="faqList">
+
+      <!-- Group: Orders & Payments -->
+      <div class="faq-group" data-group="orders">
+        <h2 class="group-title">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+          Orders &amp; Payments
+        </h2>
+
+        <article class="faq" data-search="track order dispatched tracking awb">
+          <button class="faq-q" aria-expanded="true">
+            <span>How do I track my order once dispatched?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Once your celebratory piece is crafted and handed over to our courier partner (Bluedart/Delhivery), you will immediately receive an SMS &amp; email with your live tracking AWB link.</p>
+            <div class="tip">
+              <div class="tip-text">
+                <p class="tip-title">Have an active tracking ID?</p>
+                <p class="tip-sub">Enter your order ID on our tracker</p>
+              </div>
+              <a href="#track" class="btn-solid btn-sm">Track<br />Order</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="faq" data-search="payment methods accepted">
+          <button class="faq-q" aria-expanded="false">
+            <span>Which payment methods are accepted?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Answer goes here.</p>
+          </div>
+        </article>
+
+        <article class="faq" data-search="cancel modify order placing">
+          <button class="faq-q" aria-expanded="false">
+            <span>Can I cancel or modify my order after placing it?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Answer goes here.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Group: Shipping & Delivery -->
+      <div class="faq-group" data-group="shipping">
+        <h2 class="group-title">
+          <svg width="18" height="13" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 2h13v10H1zM14 6h4l4 4v2h-8"/><circle cx="6" cy="13" r="2"/><circle cx="18" cy="13" r="2"/></svg>
+          Shipping &amp; Delivery
+        </h2>
+
+        <article class="faq" data-search="shipping charges timelines delivery">
+          <button class="faq-q" aria-expanded="false">
+            <span>What are shipping charges and timelines?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+
+        <article class="faq" data-search="international shipping overseas">
+          <button class="faq-q" aria-expanded="false">
+            <span>Do you offer international shipping?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+      </div>
+
+      <!-- Group: Returns & Exchanges -->
+      <div class="faq-group" data-group="returns">
+        <h2 class="group-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12a8 8 0 0 1 14-5l2 2M20 12a8 8 0 0 1-14 5l-2-2"/><path d="M20 4v5h-5M4 20v-5h5"/></svg>
+          Returns &amp; Exchanges
+        </h2>
+
+        <article class="faq" data-search="return policy refund">
+          <button class="faq-q" aria-expanded="false">
+            <span>What is Layas Boutique's return policy?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+
+        <article class="faq" data-search="size exchange swap">
+          <button class="faq-q" aria-expanded="false">
+            <span>How do I initiate a size exchange?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+      </div>
+
+      <!-- Group: Products & Sizing -->
+      <div class="faq-group" data-group="products">
+        <h2 class="group-title">
+          <svg width="16" height="11" viewBox="0 0 24 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 2h20v12H2zM6 2v4M10 2v3M14 2v4M18 2v3"/></svg>
+          Products &amp; Sizing
+        </h2>
+
+        <article class="faq" data-search="perfect fit size guide">
+          <button class="faq-q" aria-expanded="false">
+            <span>How do I find my perfect fit? Is a size guide available?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+
+        <article class="faq" data-search="ready-to-wear unstitched sarees suits">
+          <button class="faq-q" aria-expanded="false">
+            <span>Are sarees and suits ready-to-wear or unstitched?</span>
+            <svg class="chev" width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-a" hidden><p>Answer goes here.</p></div>
+        </article>
+      </div>
+
+      <p class="empty" id="emptyState" hidden>No questions match your search. Try a different keyword.</p>
+    </section>
+
+    <!-- Support card -->
+    <section class="support">
+      <div class="support-icon" aria-hidden="true">
+        <svg width="20" height="18" viewBox="0 0 24 20" fill="none" stroke="#9a3b57" stroke-width="1.6" stroke-linejoin="round"><path d="M2 3h20v12H9l-5 4v-4H2z"/></svg>
+      </div>
+      <p class="script-sm">Need Personal Styling Assistance?</p>
+      <h3 class="support-title">Still Need Help?</h3>
+      <p class="support-text">Couldn't find what you're looking for? Our friendly stylist team is ready to help with orders, custom sizing, and bridal queries.</p>
+      <a href="#whatsapp" class="btn-solid btn-block">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>
+        Chat on WhatsApp
+      </a>
+      <a href="#contact" class="btn-outline btn-block">
+        <svg width="13" height="11" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="14" rx="2"/><path d="m2 4 10 7 10-7"/></svg>
+        Contact Us
+      </a>
+    </section>
+
+    <!-- Instagram -->
+    <section class="inspire">
+      <svg width="22" height="20" viewBox="0 0 24 21" fill="none" stroke="#9a3b57" stroke-width="1.4" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+      <p class="script-sm">Get Inspired:</p>
+      <h3 class="inspire-title">Follow us on Instagram</h3>
+      <a href="#instagram" class="btn-solid btn-pill">@LAYAS.BOUTIQUE</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="brand">
+        <span class="logo-script">Layas</span>
+        <span class="logo-serif dark">BOUTIQUE</span>
+      </div>
+      <p class="footer-blurb">Handcrafted Indian ethnic wear and celebratory festive silhouettes curated for timeless grace.</p>
+
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#">Shipping &amp; Delivery</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Newsletter Signup</h4>
+        <p class="news-text">Be the first to know about new bridal &amp; festive drops.</p>
+        <form class="news-form" id="newsForm" novalidate>
+          <input type="email" id="newsEmail" placeholder="Enter your email" aria-label="Email address" required />
+          <button type="submit" class="btn-solid btn-sm-join">Join</button>
+        </form>
+        <p class="news-msg" id="newsMsg" role="status"></p>
+      </div>
+
+      <p class="copyright">© 2025 Layas Boutique. Handcrafted with love in India.</p>
+    </footer>
+  </main>
+
+  <!-- ============ BOTTOM NAV (fixed) ============ -->
+  <nav class="bottom-nav" aria-label="Bottom navigation">
+    <a href="#" class="bn-item">
+      <svg width="14" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="#" class="bn-item">
+      <svg width="17" height="15" viewBox="0 0 24 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M2 6h20l-2 12H4z"/><path d="M8 6V4a4 4 0 0 1 8 0v2"/></svg>
+      <span>Shop</span>
+    </a>
+    <a href="#" class="bn-item">
+      <svg width="17" height="16" viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20s-7-4.5-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.5-9 9-9 9z"/></svg>
+      <span>Wishlist</span>
+    </a>
+    <a href="#" class="bn-item">
+      <svg width="14" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span>Cart</span>
+    </a>
+    <a href="#" class="bn-item is-active">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script>
+    /* Layas Boutique – FAQ interactions */
+(function () {
+  'use strict';
+
+  const faqList = document.getElementById('faqList');
+  const groups = Array.from(document.querySelectorAll('.faq-group'));
+  const pills = Array.from(document.querySelectorAll('.pill'));
+  const searchInput = document.getElementById('faqSearch');
+  const emptyState = document.getElementById('emptyState');
+  const focusSearchBtn = document.querySelector('[data-action="focus-search"]');
+
+  let activeFilter = 'all';
+  let query = '';
+
+  /* ---------- Accordions ---------- */
+  // Each question button toggles its answer. Multiple panels can be open at once.
+  document.querySelectorAll('.faq-q').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const panel = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      panel.hidden = isOpen;
+    });
+  });
+
+  /* ---------- Category pills ---------- */
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      activeFilter = pill.dataset.filter;
+      pills.forEach((p) => {
+        const selected = p === pill;
+        p.classList.toggle('is-active', selected);
+        p.setAttribute('aria-selected', String(selected));
+      });
+      applyFilters();
+    });
+  });
+
+  /* ---------- Search ---------- */
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      query = searchInput.value.trim().toLowerCase();
+      applyFilters();
+    });
+  }
+
+  if (focusSearchBtn && searchInput) {
+    focusSearchBtn.addEventListener('click', () => searchInput.focus());
+  }
+
+  function applyFilters() {
+    let visibleCount = 0;
+
+    groups.forEach((group) => {
+      const groupMatches = activeFilter === 'all' || group.dataset.group === activeFilter;
+      let groupVisible = 0;
+
+      group.querySelectorAll('.faq').forEach((item) => {
+        const text = (item.querySelector('.faq-q span').textContent + ' ' + (item.dataset.search || '')).toLowerCase();
+        const matchesQuery = !query || text.includes(query);
+        const show = groupMatches && matchesQuery;
+        item.hidden = !show;
+        if (show) groupVisible++;
+      });
+
+      group.hidden = groupVisible === 0;
+      visibleCount += groupVisible;
+    });
+
+    // Coupons & Offers has no questions in the design yet, so it shows the empty message.
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  /* ---------- Newsletter ---------- */
+  const newsForm = document.getElementById('newsForm');
+  const newsEmail = document.getElementById('newsEmail');
+  const newsMsg = document.getElementById('newsMsg');
+
+  if (newsForm) {
+    newsForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = newsEmail.value.trim();
+      const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+
+      if (!valid) {
+        newsMsg.textContent = 'Please enter a valid email address.';
+        newsEmail.focus();
+        return;
+      }
+
+      newsMsg.textContent = 'Thank you for joining the list!';
+      newsForm.reset();
+    });
+  }
+})();
+  </script>
+</body>
+</html>

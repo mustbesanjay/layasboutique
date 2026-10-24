@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Layas Journal – Layas Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff7fa; --white:#fff; --plum:#2f0e2f; --rose:#9a3b57; --text:#544245;
+  --blush:#ffeff9; --pink:#ffe7f9; --line:#ffd6f9; --deep:#340043; --gold:#ffe174; --violet:#81488f;
+  --sans:'Montserrat',system-ui,sans-serif; --serif:'Playfair Display',Georgia,serif; --display:'Bodoni Moda',Georgia,serif;
+  --title:'Liberation Serif','Times New Roman',Times,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f3e9ef;font-family:var(--sans);color:var(--plum);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
+img{display:block}
+.app{position:relative;width:100%;max-width:390px;margin:0 auto;background:var(--bg);min-height:100vh;overflow-x:hidden}
+
+/* Header */
+.header{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:390px;z-index:20;box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.promo{height:32px;background:var(--deep);display:flex;align-items:center;justify-content:center;gap:4px;padding:0 16px;color:var(--gold);font-weight:800;font-size:10px;letter-spacing:.9px;text-transform:uppercase;white-space:nowrap}
+.promo span{color:#ffd9df;font-weight:500;font-size:11px}
+.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px)}
+.logo{display:flex;align-items:center;gap:4px}
+.logo i{font-family:var(--serif);font-style:italic;font-size:16px;line-height:22px;letter-spacing:.4px;color:var(--violet)}
+.logo b{font-family:var(--display);font-weight:700;font-size:18px;line-height:24px;letter-spacing:-.45px;text-transform:uppercase;color:var(--deep)}
+.actions{display:flex;align-items:center;gap:4px}
+.icon-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;position:relative}
+.badge{position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:9999px;background:var(--rose);color:#fff;font-size:9px;font-weight:700;line-height:16px;text-align:center}
+.avatar{width:32px;height:32px;border-radius:9999px;background:var(--rose);display:flex;align-items:center;justify-content:center}
+.menu{height:40px;overflow-x:auto;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);display:flex;align-items:center;gap:20px;padding:0 16px;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.menu a{flex:none;padding:8px 0;font-size:11px;font-weight:700;line-height:14px;letter-spacing:1.1px;text-transform:uppercase;color:var(--text);transition:color .2s}
+.menu a:hover,.menu a.active{color:var(--rose)}
+
+main{padding:128px 0 96px}
+.breadcrumb{display:flex;align-items:center;gap:4px;padding:8px 16px;font-size:11px;line-height:15px;font-weight:500;color:var(--text)}
+.breadcrumb b{color:var(--rose);font-weight:600}
+
+.page-header{display:flex;flex-direction:column;align-items:center;padding:4px 16px 12px;text-align:center}
+.eyebrow{padding-bottom:4px;font-family:var(--serif);font-style:italic;font-size:16px;line-height:22px;letter-spacing:.4px;color:var(--violet)}
+h1{padding-bottom:8px;font-family:var(--display);font-weight:600;font-size:22px;line-height:28px;letter-spacing:1.1px;text-transform:uppercase}
+.orn{display:flex;align-items:center;gap:8px;padding-bottom:12px;font-size:12px;line-height:18px;color:var(--rose);font-family:'FreeSans',sans-serif}
+.orn::before,.orn::after{content:"";width:32px;height:1px;background:rgba(154,59,87,.4)}
+.page-header p{max-width:320px;padding:0 17.5px;font-size:12px;line-height:19.5px;letter-spacing:.12px;color:var(--text)}
+
+.chips{display:flex;gap:4px;align-items:center;overflow-x:auto;padding:4px 16px 8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:6px 16px;border-radius:9999px;background:var(--pink);color:var(--text);font-size:10px;font-weight:700;line-height:14px;letter-spacing:.5px;text-transform:uppercase;text-align:center;transition:.2s}
+.chip.active{background:var(--rose);color:#fff;filter:drop-shadow(0 1px 1px rgba(0,0,0,.05))}
+
+[hidden]{display:none!important}
+
+/* Hero */
+.hero-wrap{padding:12px 16px 0}
+.hero{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(62,4,78,.06)}
+.hero .media{position:relative;height:268.5px;overflow:hidden}
+.media img{position:absolute;max-width:none;pointer-events:none;height:100%;top:0;left:var(--l,0);width:var(--w,100%)}
+.pill-tag{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:9999px;background:rgba(52,0,67,.9);backdrop-filter:blur(6px);box-shadow:0 1px 2px rgba(0,0,0,.05);color:var(--gold);font-size:9px;line-height:13.5px;letter-spacing:.9px;text-transform:uppercase}
+.hero .body{padding:20px}
+.meta{display:flex;gap:8px;align-items:center;padding-bottom:4px;font-size:10px;line-height:15px;color:var(--text)}
+.meta b{font-weight:500;color:var(--violet)}
+.hero h2{font-family:var(--display);font-weight:600;font-size:18px;line-height:24.75px;letter-spacing:1.44px;padding-bottom:4px;min-height:78.25px;margin-top:-1.25px}
+.hero p{padding-bottom:12px;font-size:12px;line-height:18px;letter-spacing:.12px;color:var(--text)}
+.hero .row{display:flex;align-items:center;justify-content:space-between;padding-top:4px}
+.read-btn{display:flex;align-items:center;gap:4px;padding:10px 20px;border-radius:9999px;background:var(--rose);filter:drop-shadow(0 4px 6px rgba(154,59,87,.3));color:#fff;font-size:10px;font-weight:700;line-height:14px;letter-spacing:1px;text-transform:uppercase}
+.read-btn img{width:9.333px;height:9.333px}
+.bm{width:36px;height:36px;border-radius:9999px;background:var(--blush);display:flex;align-items:center;justify-content:center}
+.bm img{width:10.5px;height:13.5px}
+.bm.on img,.bm2.on img{filter:saturate(2) hue-rotate(-10deg) brightness(.8)}
+
+.divider{display:flex;align-items:center;gap:12px;padding:32px 16px}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.divider span{font-family:var(--serif);font-style:italic;font-size:16px;line-height:22px;color:var(--rose);white-space:nowrap}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 16px;align-items:start}
+.card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(62,4,78,.04);display:flex;flex-direction:column}
+.card .media{position:relative;height:216.25px;overflow:hidden}
+.card .tag{position:absolute;top:8px;left:8px;padding:2px 8px;border-radius:9999px;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);font-size:8px;font-weight:700;line-height:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--rose)}
+.card .tag.v{color:var(--violet)}
+.card .info{padding:8px;display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.card .top{display:flex;flex-direction:column;gap:4px;padding-bottom:8px}
+.card .min{font-size:9px;line-height:13.5px;letter-spacing:.225px;text-transform:uppercase;color:rgba(84,66,69,.75)}
+.card h3{font-family:var(--title);font-weight:700;font-size:13px;line-height:17px;color:var(--plum)}
+.card .foot{display:flex;align-items:center;justify-content:space-between;padding-top:4px}
+.card .date{font-size:9px;line-height:13.5px;color:var(--text)}
+.card .read{display:flex;align-items:center;gap:2px;font-size:10px;font-weight:700;line-height:15px;color:var(--rose)}
+.card .read img{width:3.7px;height:6px}
+
+.more{display:flex;justify-content:center;padding:20px 16px 8px}
+.more button{display:flex;align-items:center;gap:8px;padding:10px 32px;border-radius:9999px;background:var(--pink);font-size:10px;font-weight:700;line-height:14px;letter-spacing:1px;text-transform:uppercase;color:var(--rose)}
+.more img{width:8px;height:4.933px}
+
+/* Spotlight */
+.spot-wrap{padding:32px 16px 0}
+.spot{background:var(--white);border-radius:12px;padding:20px;filter:drop-shadow(0 4px 12px rgba(62,4,78,.06))}
+.spot-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:4px}
+.spot-tag{padding:4px 10px;border-radius:9999px;background:rgba(255,217,223,.4);font-size:9px;font-weight:700;line-height:13.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--rose)}
+.bm2{width:32px;height:32px;border-radius:9999px;display:flex;align-items:center;justify-content:center}
+.bm2 img{width:13.5px;height:15px}
+.spot h2{padding-bottom:4px;font-family:var(--title);font-weight:700;font-size:22px;line-height:27.5px;letter-spacing:-.55px;text-transform:uppercase}
+.byline{padding-bottom:12px;font-size:11px;line-height:15px;font-weight:500;color:var(--text)}
+.spot .pic{position:relative;height:178.88px;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05);margin-bottom:12px}
+.spot .txt{padding-bottom:12px;font-size:12px;line-height:19.5px;letter-spacing:.12px;color:var(--plum)}
+.quote{margin:12px 0;padding:20px;border-radius:12px;background:var(--blush);display:flex;flex-direction:column;align-items:center;text-align:center}
+.quote .q{font-family:var(--display);font-weight:600;font-size:26px;line-height:26px;letter-spacing:1.56px;color:var(--rose)}
+.quote blockquote{padding:7.25px 9.59px 8px;font-family:var(--serif);font-style:italic;font-size:18px;line-height:24.75px;color:var(--deep)}
+.quote figcaption{padding-top:4px;font-size:9px;font-weight:700;line-height:13.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--rose)}
+.capsule{margin-top:8px;padding:12px;border-radius:12px;background:var(--blush)}
+.cap-h{display:flex;align-items:center;gap:4px;padding-bottom:4px;font-size:9px;font-weight:700;line-height:13.5px;letter-spacing:.9px;text-transform:uppercase;color:var(--violet)}
+.cap-h img{width:10.5px;height:12.25px}
+.cap{display:flex;align-items:center;gap:12px}
+.cap .pic{position:relative;flex:none;width:80px;height:96px;border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.cap .d{flex:1;min-width:0}
+.cap h4{font-family:var(--title);font-weight:700;font-size:13px;line-height:17.88px;color:var(--plum);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cap .pr{padding-top:2px;font-size:12px;font-weight:700;line-height:16px;color:var(--rose)}
+.cap .sub{padding-top:2px;font-size:10px;line-height:15px;color:var(--text)}
+.cap .btns{display:flex;align-items:center;gap:4px;padding-top:4px}
+.add{display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:9999px;background:var(--rose);filter:drop-shadow(0 1px 1px rgba(0,0,0,.05));color:#fff;font-size:9px;font-weight:700;line-height:13.5px;letter-spacing:.45px;text-transform:uppercase;transition:transform .15s,background .2s}
+.add:active{transform:scale(.97)}
+.add img{width:8px;height:10px}
+.add.done{background:#6e2a40}
+.wish{width:28px;height:28px;border-radius:9999px;background:var(--bg);display:flex;align-items:center;justify-content:center}
+.wish img{width:11.667px;height:10.704px}
+.wish.on,.like.on{background:var(--pink)}
+
+.feedback-wrap{padding-top:20px}
+.feedback{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:12px;background:var(--blush)}
+.feedback .l{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:500;line-height:15px}
+.feedback .l img{width:18.333px;height:16.25px}
+.like{display:flex;align-items:center;gap:3.99px;padding:4px 12px;border-radius:9999px;background:var(--white);filter:drop-shadow(0 1px 1px rgba(0,0,0,.05));font-size:10px;font-weight:700;line-height:15px;text-transform:uppercase;color:var(--rose);transition:background .2s}
+.like img{width:11.667px;height:10.704px}
+
+.news-wrap{padding:20px 16px 0}
+.news{padding:20px;border-radius:12px;background:linear-gradient(151.36deg,#ffe7f9 0%,#ffd6f9 100%);display:flex;flex-direction:column;align-items:center;text-align:center}
+.news .e{padding-bottom:4px;font-family:var(--serif);font-style:italic;font-size:16px;line-height:22px;color:var(--rose)}
+.news h3{padding-bottom:4px;font-family:var(--display);font-weight:600;font-size:18px;line-height:24px;letter-spacing:.45px;text-transform:uppercase;color:var(--deep)}
+.news p{max-width:320px;padding:0 14.5px 12px;font-size:12px;line-height:18px;letter-spacing:.12px;color:var(--text)}
+.news form{display:flex;align-items:center;gap:4px;width:100%;max-width:320px}
+.news input{flex:1;min-width:0;padding:11px 12px 11.5px;border:0;outline:0;border-radius:9999px;background:var(--white);box-shadow:0 1px 2px rgba(0,0,0,.05);font:400 11px var(--sans);color:var(--plum)}
+.news input::placeholder,.fnews input::placeholder{color:rgba(84,66,69,.5)}
+.news input:focus,.fnews input:focus{box-shadow:0 0 0 1px var(--rose)}
+.news button{flex:none;padding:10px 12px;border-radius:9999px;background:var(--rose);filter:drop-shadow(0 4px 6px rgba(154,59,87,.3));color:#fff;font-size:10px;font-weight:700;line-height:14px;letter-spacing:1px;text-transform:uppercase}
+.msg{min-height:15px;padding-top:6px;font-size:11px;line-height:15px;font-weight:500}
+
+.bottom{padding:32px 16px 0;display:flex;flex-direction:column;gap:20px}
+.insta{display:flex;flex-direction:column;align-items:center;padding:20px;border-radius:12px;background:var(--blush);filter:drop-shadow(0 1px 4px rgba(0,0,0,.04));text-align:center}
+.insta img{width:23.333px;height:21px;margin-bottom:4px}
+.insta .k{padding-bottom:4px;font-family:var(--serif);font-size:16px;line-height:22px;color:var(--rose)}
+.insta h4{padding-bottom:12px;font-family:var(--display);font-weight:600;font-size:18px;line-height:24px;letter-spacing:1.44px;text-transform:uppercase}
+.insta a{padding:8px 20px;border-radius:9999px;background:var(--rose);color:#fff;font-size:10px;font-weight:700;line-height:14px;letter-spacing:.8px;text-transform:uppercase}
+
+footer{display:flex;flex-direction:column;gap:20px;padding:20px;border-radius:12px;background:var(--white);filter:drop-shadow(0 1px 4px rgba(0,0,0,.04))}
+.brand{display:flex;flex-direction:column;gap:4px}
+.brand p{font-size:12px;line-height:18px;letter-spacing:.12px;color:var(--text)}
+.col{display:flex;flex-direction:column;gap:4px}
+.col h5{font-size:11px;font-weight:700;line-height:14px;letter-spacing:1.1px;text-transform:uppercase}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:4px}
+.col li a{display:block;font-size:12px;line-height:18px;letter-spacing:.12px;color:var(--text);transition:color .2s}
+.col li a:hover{color:var(--rose)}
+.col>p{font-size:11px;line-height:15px;font-weight:500;color:var(--text)}
+.fnews{display:flex;align-items:center;gap:4px;padding-top:4px}
+.fnews input{flex:1;min-width:0;padding:9px 12px 10px;border:0;outline:0;border-radius:9999px;background:var(--bg);font:400 12px var(--sans);color:var(--plum)}
+.fnews button{padding:8px 12px;border-radius:9999px;background:var(--rose);color:#fff;font-size:10px;font-weight:700;line-height:14px;letter-spacing:.8px;text-transform:uppercase}
+.copy{padding-top:12px;text-align:center;font-size:11px;line-height:15px;font-weight:500;color:var(--text)}
+
+.tabbar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:390px;z-index:20;height:64px;display:flex;align-items:center;padding:0 12px;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);box-shadow:0 1px 8px rgba(0,0,0,.04);justify-content:space-between}
+.tab{width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:9px;line-height:13.5px;letter-spacing:.45px;text-transform:uppercase;color:var(--text)}
+.tab .ti{height:15px;display:flex;align-items:center}
+
+.toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,20px);background:var(--deep);color:#fff;padding:8px 16px;border-radius:9999px;font-size:11px;font-weight:500;opacity:0;pointer-events:none;transition:.3s;z-index:30;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<div class="app">
+
+<header class="header">
+  <div class="promo">FREE SHIPPING ON ORDERS ABOVE ₹3000 <span>♡</span></div>
+  <div class="topbar">
+    <a class="logo" href="#"><i>Layas</i><b>Boutique</b></a>
+    <div class="actions">
+      <button class="icon-btn" aria-label="Search"><img data-asset="e1ff7.svg" width="16.5" height="16.5" alt=""></button>
+      <a class="icon-btn" href="#" aria-label="Cart"><img data-asset="40720.svg" width="14.667" height="18.333" alt=""><span class="badge" id="cartCount">0</span></a>
+      <button class="avatar" aria-label="Account"><img data-asset="59e02.svg" width="12" height="12" alt=""></button>
+    </div>
+  </div>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="faq.html">FAQ</a>
+    <a href="blog.html" class="active">Blog</a>
+  </nav>
+</header>
+
+<main>
+  <nav class="breadcrumb"><a href="#">Home</a><span>/</span><a href="#">Blog</a><span>/</span><b>The Layas Journal</b></nav>
+
+  <section class="page-header">
+    <div class="eyebrow">Editorial &amp; Musings</div>
+    <h1>The Layas Journal</h1>
+    <div class="orn">❧</div>
+    <p>Style inspiration, festive outfit ideas, fabric care secrets, and stories from our design atelier.</p>
+  </section>
+
+  <div class="chips" id="chips">
+    <button class="chip active" data-cat="all">All<br>Stories</button>
+    <button class="chip" data-cat="festive">Festive<br>Styling</button>
+    <button class="chip" data-cat="ethnic">Ethnic<br>Wear</button>
+    <button class="chip" data-cat="fabric">Fabric<br>Care</button>
+    <button class="chip" data-cat="trends">Trends<br>&amp; Ideas</button>
+  </div>
+
+  <div class="hero-wrap" data-cat="festive" data-article>
+    <article class="hero">
+      <div class="media">
+        <img data-asset="fa6f4.png" style="--l:-18.82%;--w:137.63%" alt="Royal festive silhouettes">
+        <span class="pill-tag">Festive Couture • 5 Min Read</span>
+      </div>
+      <div class="body">
+        <div class="meta"><span>October 24, 2025</span><span>•</span><b>By Layas Editorial Team</b></div>
+        <h2>The Art of Draping: Royal Festive Silhouettes for the Wedding Season</h2>
+        <p>From handcrafted zari motifs to delicate organza dupattas, discover how to style classic royal heritage sarees with contemporary confidence.</p>
+        <div class="row">
+          <a class="read-btn" href="#" data-toast="Opening article…">Read Article <img data-asset="0ecdd.svg" alt=""></a>
+          <button class="bm" aria-label="Bookmark article"><img data-asset="64b0b.svg" alt=""></button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="divider"><span>Recent Musings</span></div>
+
+  <section class="grid" id="grid">
+    <article class="card" data-cat="festive" data-article>
+      <div class="media"><img data-asset="ccb4f.png" style="--l:-61.89%;--w:223.78%" alt=""><span class="tag">Occasion Wear</span></div>
+      <div class="info">
+        <div class="top"><div class="min">4 Min Read</div><h3>How to Style Pastels for Sunlit Day Celebrations</h3></div>
+        <div class="foot"><span class="date">Oct 20</span><a class="read" href="#" data-toast="Opening article…">READ <img data-asset="60173.svg" alt=""></a></div>
+      </div>
+    </article>
+    <article class="card" data-cat="fabric" data-article>
+      <div class="media"><img data-asset="ff56e.png" style="--l:-64.7%;--w:229.39%" alt=""><span class="tag v">Fabric Care</span></div>
+      <div class="info">
+        <div class="top"><div class="min">6 Min Read</div><h3>Cotton vs. Chanderi: Caring for Your…</h3></div>
+        <div class="foot"><span class="date">Oct 18</span><a class="read" href="#" data-toast="Opening article…">READ <img data-asset="60173.svg" alt=""></a></div>
+      </div>
+    </article>
+    <article class="card" data-cat="trends" data-article>
+      <div class="media"><img data-asset="90735.png" style="--l:-64.7%;--w:229.39%" alt=""><span class="tag">Styling Tips</span></div>
+      <div class="info">
+        <div class="top"><div class="min">3 Min Read</div><h3>5 Versatile Peplum Tops for Modern Festive Layering</h3></div>
+        <div class="foot"><span class="date">Oct 14</span><a class="read" href="#" data-toast="Opening article…">READ <img data-asset="60173.svg" alt=""></a></div>
+      </div>
+    </article>
+    <article class="card" data-cat="ethnic" data-article>
+      <div class="media"><img data-asset="a6b94.png" style="--l:-64.7%;--w:229.39%" alt=""><span class="tag v">Accessories</span></div>
+      <div class="info">
+        <div class="top"><div class="min">4 Min Read</div><h3>Minimalist Jewellery Pairings for Grand Ethnic</h3></div>
+        <div class="foot"><span class="date">Oct 09</span><a class="read" href="#" data-toast="Opening article…">READ <img data-asset="60173.svg" alt=""></a></div>
+      </div>
+    </article>
+  </section>
+
+  <div class="more"><button id="loadMore"><span>Load More Stories</span><img data-asset="2ae14.svg" alt=""></button></div>
+
+  <div class="spot-wrap" data-cat="ethnic" data-article>
+    <section class="spot">
+      <div class="spot-top">
+        <span class="spot-tag">Featured Story Spotlight</span>
+        <button class="bm2" aria-label="Bookmark story"><img data-asset="bfce5.svg" alt=""></button>
+      </div>
+      <h2>A Closer Look: The Zari Weave of Banaras</h2>
+      <div class="byline">By Ananya Varma • 7 Min Deep Read</div>
+      <div class="pic media"><img data-asset="72624.png" style="--l:-1.61%;--w:103.23%" alt="Banarasi zari weave"></div>
+      <p class="txt">For centuries, the ghaths and historic alleys of Banaras have echoed the rhythmic clatter of pit looms. Each weave is a testament to mindful slowness: real silver wires electroplated with 24-karat gold passing through lustrous mulberry silk warps, crafting heirlooms destined to be treasured across generations.</p>
+      <figure class="quote">
+        <div class="q">“</div>
+        <blockquote>A saree is not merely fabric; it is a canvas of generational art and timeless feminine grace.</blockquote>
+        <figcaption>— Layas Design Atelier</figcaption>
+      </figure>
+      <p class="txt">When styling such heirloom textiles, let the metallic luster take center stage. Pair with an understated boat-neck blouse and minimal kundan accents to achieve an unforgettable balance of heritage poise and understated luxury.</p>
+      <div class="capsule">
+        <div class="cap-h"><img data-asset="c02c5.svg" alt="">Featured in this article</div>
+        <div class="cap">
+          <div class="pic media"><img data-asset="09aab.png" style="--l:-60.11%;--w:220.22%" alt="Imperial Plum Zari Saree"></div>
+          <div class="d">
+            <h4>Imperial Plum Zari Saree</h4>
+            <div class="pr">₹4,899</div>
+            <div class="sub">Handwoven Chanderi Silk Blend</div>
+            <div class="btns">
+              <button class="add" id="addCart">Add to Cart <img data-asset="8e934.svg" alt=""></button>
+              <button class="wish" id="wishBtn" aria-label="Add to wishlist"><img data-asset="71f03.svg" alt=""></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="feedback-wrap" style="padding:20px 0 0">
+    <div class="feedback">
+      <div class="l"><img data-asset="9a752.svg" alt="">Enjoyed this journal entry?</div>
+      <button class="like" id="likeBtn"><img data-asset="71f03.svg" alt=""><span id="likeCount">148</span></button>
+    </div>
+  </div>
+
+  <div class="news-wrap">
+    <section class="news">
+      <div class="e">Letters from the Atelier</div>
+      <h3>Receive Editorial Edits</h3>
+      <p>Curated seasonal moodboards, slow-craft documentation, and private festive drop access directly in your inbox.</p>
+      <form class="nform" novalidate>
+        <input type="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Join</button>
+      </form>
+      <div class="msg"></div>
+    </section>
+  </div>
+
+  <section class="bottom">
+    <div class="insta">
+      <img data-asset="730d6.svg" alt="">
+      <div class="k">Get Inspired:</div>
+      <h4>Follow us on Instagram</h4>
+      <a href="#">@layas.boutique</a>
+    </div>
+    <footer>
+      <div class="brand">
+        <a class="logo" href="#"><i>Layas</i><b>Boutique</b></a>
+        <p>Handcrafted Indian ethnic wear and celebratory festive silhouettes curated for timeless grace.</p>
+      </div>
+      <div class="col"><h5>Quick Links</h5>
+        <ul><li><a href="#">Shop</a></li><li><a href="#">Collections</a></li><li><a href="#">Our Story</a></li><li><a href="#">FAQs</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Blog</a></li></ul>
+      </div>
+      <div class="col"><h5>Customer Care</h5>
+        <ul><li><a href="#">Shipping &amp; Delivery</a></li><li><a href="#">Returns &amp; Exchanges</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Track Order</a></li></ul>
+      </div>
+      <div class="col"><h5>Newsletter Signup</h5>
+        <p>Be the first to know about new bridal &amp; festive drops.</p>
+        <form class="fnews nform" novalidate>
+          <input type="email" placeholder="Enter your email" aria-label="Email">
+          <button type="submit">Join</button>
+        </form>
+        <div class="msg"></div>
+      </div>
+      <div class="copy">© 2025 Layas Boutique. Handcrafted with love in India.</div>
+    </footer>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <a class="tab" href="#"><span class="ti"><img data-asset="5c305.svg" width="13.333" height="15" alt=""></span>Home</a>
+  <a class="tab" href="#"><span class="ti"><img data-asset="327e3.svg" width="16.745" height="15" alt=""></span>Shop</a>
+  <a class="tab" href="#"><span class="ti"><img data-asset="208bc.svg" width="16.667" height="15.292" alt=""></span>Wishlist</a>
+  <a class="tab" href="#"><span class="ti"><img data-asset="2639c.svg" width="13.333" height="16.667" alt=""></span>Cart</a>
+  <a class="tab" href="#"><span class="ti"><img data-asset="47a80.svg" width="13.333" height="13.333" alt=""></span>Profile</a>
+</nav>
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+/* Assets exported from Figma (temporary URLs, expire ~7 days).
+   Download each file and change ASSET_BASE to your local folder, e.g. "assets/". */
+const ASSET_BASE = "https://www.figma.com/api/mcp/asset/7f6f43d1-8aef-470a-9323-7c60a48b93ea/";
+
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+$$("[data-asset]").forEach(el => el.src = ASSET_BASE + el.dataset.asset);
+
+function toast(msg){
+  const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+/* Category filter */
+$("#chips").addEventListener("click", e => {
+  const chip = e.target.closest(".chip"); if (!chip) return;
+  $$(".chip").forEach(c => c.classList.toggle("active", c === chip));
+  const cat = chip.dataset.cat;
+  $$("[data-article]").forEach(a => a.hidden = !(cat === "all" || a.dataset.cat === cat));
+  $(".divider").hidden = !$$("#grid .card").some(c => !c.hidden);
+});
+
+/* Bookmarks, likes, wishlist, cart */
+$$(".bm, .bm2").forEach(b => b.addEventListener("click", () => {
+  b.classList.toggle("on"); toast(b.classList.contains("on") ? "Article saved" : "Bookmark removed");
+}));
+let liked = false;
+$("#likeBtn").addEventListener("click", e => {
+  liked = !liked; const n = $("#likeCount");
+  n.textContent = liked ? 149 : 148; e.currentTarget.classList.toggle("on", liked);
+});
+$("#wishBtn").addEventListener("click", e => {
+  const b = e.currentTarget; b.classList.toggle("on");
+  toast(b.classList.contains("on") ? "Saved to wishlist" : "Removed from wishlist");
+});
+let cart = 0;
+$("#addCart").addEventListener("click", e => {
+  const b = e.currentTarget; cart++; $("#cartCount").textContent = cart;
+  const html = b.innerHTML; b.classList.add("done"); b.textContent = "Added ✓"; toast("Added to cart");
+  setTimeout(() => { b.classList.remove("done"); b.innerHTML = html; $$("[data-asset]", b).forEach(i => i.src = ASSET_BASE + i.dataset.asset); }, 1200);
+});
+
+/* Load more: appends copies of the current cards (replace with real data/fetch) */
+let pages = 1;
+$("#loadMore").addEventListener("click", e => {
+  if (pages >= 3) { toast("You're all caught up"); e.currentTarget.disabled = true; e.currentTarget.style.opacity = .5; return; }
+  pages++;
+  $$("#grid .card").slice(0, 4).forEach(c => $("#grid").appendChild(c.cloneNode(true)));
+  toast("More stories loaded");
+});
+
+/* Newsletter forms */
+$$(".nform").forEach(f => f.addEventListener("submit", e => {
+  e.preventDefault();
+  const input = $("input", f), msg = f.nextElementSibling, v = input.value.trim();
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  msg.textContent = ok ? "Thanks for joining!" : "Please enter a valid email.";
+  msg.style.color = ok ? "#2e7d32" : "#ba1a1a";
+  if (ok) input.value = "";
+}));
+
+/* Demo links */
+document.addEventListener("click", e => {
+  const a = e.target.closest("a"); if (!a) return;
+  if (a.getAttribute("href") === "#") { e.preventDefault(); if (a.dataset.toast) toast(a.dataset.toast); }
+});
+</script>
+</body>
+</html>
